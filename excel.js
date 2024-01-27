@@ -1,7 +1,6 @@
 const base_url = "https://api.waqi.info";
 const token = "6adbc6ff13fe01a446ff9fb49c7d993d69d71fe3";
 const fs = require('fs');
-const fetch = require('node-fetch');
 const ExcelJS = require('exceljs');
 
 async function fetchDataForCities() {
@@ -34,7 +33,7 @@ async function fetchDataForCities() {
         continue; // Skip to the next iteration
       }
 
-      const { idx, city: { name }, aqi, city: { geo: [long, lat] }, iaqi, time: { s } } = responseData.data;
+      const { idx, city: { name }, aqi, city: { geo: [lat,long] }, iaqi, time: { s } } = responseData.data;
 
       // Initialize variables to handle undefined properties
       let coValue = hValue = no2Value = o3Value = pValue = pm10Value = pm25Value = so2Value = '';
