@@ -48,6 +48,12 @@ async function fetchDataForCities() {
       if (iaqi && iaqi.pm25 && iaqi.pm25.v) pm25Value = iaqi.pm25.v;
       if (iaqi && iaqi.so2 && iaqi.so2.v) so2Value = iaqi.so2.v;
 
+      // Check if pm25Value is empty before adding the data
+      if (!pm25Value || !pm10Value){
+        console.log(`Skipping city ${name} due to missing PM25 value.`);
+        continue;
+      }
+
       // Format numbers with more precision (e.g., 6 decimal places)
       const formattedLat = parseFloat(lat).toFixed(6);
       const formattedLong = parseFloat(long).toFixed(6);
@@ -67,5 +73,4 @@ async function fetchDataForCities() {
     console.error('Error:', error);
   }
 }
-
 fetchDataForCities();
