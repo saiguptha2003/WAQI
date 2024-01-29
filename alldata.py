@@ -33,11 +33,11 @@ def interpolate_and_plot(data, column_name, vmin=0, vmax=350, output_file=None):
     plt.show()
 
 
-# javascript_file = 'excel.js'
-# result = subprocess.run(['node', javascript_file], capture_output=True, text=True)
-# print("JavaScript Output:", result.stdout)
-# if result.returncode != 0:
-#     print("Error:", result.stderr)
+javascript_file = 'excel.js'
+result = subprocess.run(['node', javascript_file], capture_output=True, text=True)
+print("JavaScript Output:", result.stdout)
+if result.returncode != 0:
+    print("Error:", result.stderr)
 excel_file_path = 'AirQualityData.xlsx'
 output_directory = 'output_images/'
 pm25_data = pd.read_excel(excel_file_path)
