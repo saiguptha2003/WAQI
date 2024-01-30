@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from scipy.interpolate import griddata
 
 def interpolate_and_plot(data, column_name, vmin=0, vmax=350, output_file=None):
-    # Check if the specified column contains missing values
     if data[column_name].isnull().any():
         print(f"Removing rows with missing values in '{column_name}'.")
         data = data.dropna(subset=[column_name])
